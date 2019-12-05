@@ -57,8 +57,31 @@ app.use("/showAllWords", (req, res) => {
 });
 
 // update (CRUD)
+app.use("/update", (req, res) => {
+    var oldGermanWord = req.body.oldGermanWord;
+    var newGermanWord = req.body.newGermanWord;
+    Word.findOne({german:oldGermanWord}, (err, word) => {
+	if (err) {
+	    res.type('html').status(500);
+	    res.send("Error: " + err);
+	} else if (!word) {
+	    res.type('html').status(200);
+	    res.send("No person named " + oldGermanWord);
+	} else {
+	    //res.json(word);
+	    Word.updateOne({german:oldGermanWord}, {german:newGermanWord}, (err, word) => {
+		if (err) {
+		    res.type('html').status(500);
+		    res.send('No person named' + err);
+		} else {
+		    res.json(word);
+		}
+	    });
+	}
+    });
+});
 
-// delete (CRUD)
+// delete (CRUD) 1 of 2
 app.use("/deleteWord", (req, res) => {
     var query = req.body.german;
     console.log("query in 1: " + query)
