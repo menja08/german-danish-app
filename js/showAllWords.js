@@ -1,41 +1,11 @@
 // shows all words
 var allWords = document.getElementById("allWords");
-//allWords.innerHTML = "ivan";
-url = "http://localhost:3000/showAllWords";
-/*$.getJSON(url, (words, status) => {
 
-    allWords.append(words[0].german);
-    var wordLength = words.length;
-    allWords.append(wordLength);
-    //var paragragh = allWords.createElement("p");//
-    //paragragh.append(words[1].german);
-});*/
+url = "http://localhost:3000/showAllWords";
+
 
 var showAllWords = document.getElementById("showAllWords");
-/*
-$.getJSON(url, (words, status) => {
 
-    var wordLength = words.length;
-    //console.log(wordLength);
-    //showAllWords.append(wordLength);
-    for(i=0; i < wordLength; i++) {
-	addWord(showAllWords, words);
-	
-    }
-
-    console.log(showAllWords.childNodes);
-    //showAllWords.childNodes[0].style.borderColor = "1px solid blue";
-    //console.log(showAllWords.childNodes[0]);
-    var lengthOfNode = showAllWords.childNodes.length;
-    console.log(lengthOfNode);
-    for(i=0; i < lengthOfNode; i++) {
-	console.log(showAllWords.childNodes[i]);
-    }
-
-    
-    
-});
-*/
 
 // create element
 function addWord(showAllWords, words) {
@@ -73,7 +43,7 @@ $.getJSON(url, (words, status) => {
     addWords2(words, showAllWords2);
 });
 
-function addWords2(words, ahowAllWords2) {
+function addWords2(words, showAllWords2) {
     var lengthOfWordsArray = words.length;
 
     for (i=0; i < lengthOfWordsArray; i++) {
@@ -100,14 +70,5 @@ function addWords2(words, ahowAllWords2) {
 
     }
     
-    /*words.forEach((word) => {
-	var newDiv = document.createElement("div");
-
-	var newGermanWord = words[i].german;
-	var newDanishWord = words[i].danish;
-	var newEnglishWord = words[i].english;
-	
-	var newTextNodeGerman = document.createTextNode();
-    });*/
 }
 
