@@ -10,7 +10,10 @@ var Word = require("./js/Word.js");
 app.use("/create", (req, res) => {
     //get Schema and Model and save to database, slides 512,538
     console.log(req.body);
-    var newWord = new Word(req.body);
+    if (req.body !== {}) {
+	var newWord = new Word(req.body);
+
+	// if the request body is empty {}
     var wordsToBeSaved = Object.values(req.body);
     console.log("wordsToBeSaved is the Array = " + wordsToBeSaved);
     
@@ -31,7 +34,12 @@ app.use("/create", (req, res) => {
 	    }
 	});
     }
+
+	
+    }
     
+
+        
     //return next();
 });
 
