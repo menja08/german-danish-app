@@ -11,17 +11,27 @@ app.use("/create", (req, res) => {
     //get Schema and Model and save to database, slides 512,538
     console.log(req.body);
     var newWord = new Word(req.body);
-    newWord.save((err, word) => {// word is a json object
-	//console.log("saved1")
-	if (err) {
-	    console.log(err);
-	    res.json({});
-	} else {
-	    //res.json(word);
-	    //console.log("saved2")
-	    res.redirect("/files/home.html");
-	}
-    });
+    var wordsToBeSaved = Object.values(req.body);
+    console.log("wordsToBeSaved is the Array = " + wordsToBeSaved);
+    
+    // before saving, check inputs
+    if ((wordsToBeSaved.includes("")) || (wordsToBeSaved.includes(null)) || (wordsToBeSaved.includes(undefined))) {
+	res.redirect("/files/errorPage.html");
+    } else {
+	// assuming all inputs were filled
+	newWord.save((err, word) => {// word is a json object
+	    //console.log("saved1")
+	    if (err) {
+		console.log(err);
+		res.json({});
+	    } else {
+		//res.json(word);
+		//console.log("saved2")
+		res.redirect("/files/home.html");
+	    }
+	});
+    }
+    
     //return next();
 });
 
