@@ -9,18 +9,21 @@ var Word = require("./js/Word.js");
 // create (CRUD)
 app.use("/create", (req, res) => {
     //get Schema and Model and save to database, slides 512,538
-    console.log(req.body);
-    if (req.body !== {}) {
+    console.log(req.body.german);
+    
+    if (req.body.german === undefined) {
+	res.redirect("/files/errorPage.html");
+    } else {
 	var newWord = new Word(req.body);
 
 	// if the request body is empty {}
     var wordsToBeSaved = Object.values(req.body);
-    console.log("wordsToBeSaved is the Array = " + wordsToBeSaved);
+    //console.log("wordsToBeSaved is the Array = " + wordsToBeSaved);
     
     // before saving, check inputs
-    if ((wordsToBeSaved.includes("")) || (wordsToBeSaved.includes(null)) || (wordsToBeSaved.includes(undefined))) {
+	if ((wordsToBeSaved.includes("")) || (wordsToBeSaved.includes(null)) || (wordsToBeSaved.includes(undefined))) {
 	res.redirect("/files/errorPage.html");
-    } else {
+	} else {
 	// assuming all inputs were filled
 	newWord.save((err, word) => {// word is a json object
 	    //console.log("saved1")
@@ -34,9 +37,10 @@ app.use("/create", (req, res) => {
 	    }
 	});
     }
-
-	
     }
+    
+
+
     
 
         
