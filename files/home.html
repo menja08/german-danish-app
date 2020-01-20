@@ -17,7 +17,12 @@
 
     <div>This free application helps demonstrate the similarities between some Danish and German words. Either the spelling or pronunciation is close enough.</div>
 
-    <div><form action="" method="post">Search:<input type="input"> </form></div>
+    <div>
+      <form action="/search" method="post">
+	Search:<input type="text" name="german">
+	<input type="submit" value="search">
+      </form>
+    </div>
     <div>German word - Danish word - English word</div>
     <div>There are 50 words currently in the database</div>
     <div>Generate new random word</div>

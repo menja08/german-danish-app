@@ -165,6 +165,19 @@ app.use("/deleteWord", (req, res) => {
     */
 });
 
+app.use("/search", (req, res) => {
+    console.log("the request is = " + req.body.german);
+    Word.find({german: req.body.german}, (err, words) => {
+	if (err) {
+	    res.type().status(500);
+	    res.send("Error " + err);
+	} else {
+	    console.log(words)
+	    res.json(words);
+	}
+    });
+});
+
 app.use(express.static(__dirname));
 app.use("/public", express.static("files"));
 //app.use('/favicon.ico', express.static('files/images/favicon.ico'));
