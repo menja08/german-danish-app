@@ -23,6 +23,12 @@ app.use("/create", (req, res) => {
     // before saving, check inputs
 	if ((wordsToBeSaved.includes("")) || (wordsToBeSaved.includes(null)) || (wordsToBeSaved.includes(undefined))) {
 	res.redirect("/files/errorPage.html");
+	} else if ((/[^äöüßa-z]/i).test(req.body.german)) {// german regex
+	    res.redirect("/files/errorPage.html");
+	} else if ((/[^æøåa-z]/i).test(req.body.danish)) {// danish regex
+	    res.redirect("/files/errorPage.html");
+	} else if ((/[^a-z]/i).test(req.body.english)) {// english regex
+	    res.redirect("/files/errorPage.html");
 	} else {
 	// assuming all inputs were filled
 	newWord.save((err, word) => {// word is a json object
