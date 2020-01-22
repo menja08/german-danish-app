@@ -173,7 +173,8 @@ app.use("/search", (req, res) => {
 	    res.send("Error " + err);
 	} else {
 	    console.log(words)
-	    res.json(words);
+	    //res.json(words);
+	    res.redirect("/files/wordSearch.html");
 	}
     });
 });
@@ -188,7 +189,8 @@ app.use("/js", express.static('js'));
 
 //home redirect
 app.use("/", (req, res) => {
-    res.redirect("/files/enterWords.html");
+    //res.redirect("/files/enterWords.html");
+    res.redirect("/files/home.html");
 });
 
 //app.use();
