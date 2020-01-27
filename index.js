@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+app.set('view engine', 'ejs');
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -136,7 +138,8 @@ app.use("/deleteWord", (req, res) => {
 			    res.type().status(500);
 			    res.send("Err " + err);
 			} else {
-			    res.json(word);
+			    //res.json(word);
+			    res.redirect("/files/home.html");
 			}
 		    });
 		}
@@ -166,15 +169,25 @@ app.use("/deleteWord", (req, res) => {
 });
 
 app.use("/search", (req, res) => {
+    // takes a query
     console.log("the request is = " + req.body.german);
     Word.find({german: req.body.german}, (err, words) => {
 	if (err) {
 	    res.type().status(500);
 	    res.send("Error " + err);
 	} else {
-	    console.log(words)
-	    //res.json(words);
-	    res.redirect("/files/wordSearch.html");
+	    console.log("words array = " + words);
+	    
+	    var mywords = words[0];
+	    console.log("mywords object = " + mywords);
+	    if (mywords === undefined) {
+		res.redirect("/files/errorPage.html");
+	    } else {
+		res.render('search', {
+		german: mywords.german,
+		danish: mywords.danish,
+		english: mywords.english
+		});}
 	}
     });
 });

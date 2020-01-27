@@ -1,0 +1,15 @@
+// search
+<!doctype html>
+<html><head></head>
+<body>
+<p>You searched: </p>
+    <% if (german !== undefined) { %>
+        <div><%= german %></div>
+	<div><%= danish %></div>
+	<div><%= english %></div>
+    <% } else { %>
+        <div>Your word is not in the database</div>
+    <% } %>
+    <div><a href="../"></a></div>
+</body>
+</html>
