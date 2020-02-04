@@ -19,10 +19,10 @@ app.use("/create", (req, res) => {
 	var newWord = new Word(req.body);
 
 	// if the request body is empty {}
-    var wordsToBeSaved = Object.values(req.body);
-    //console.log("wordsToBeSaved is the Array = " + wordsToBeSaved);
-    
-    // before saving, check inputs
+	var wordsToBeSaved = Object.values(req.body);
+	//console.log("wordsToBeSaved is the Array = " + wordsToBeSaved);
+
+	// before saving, check inputs
 	if ((wordsToBeSaved.includes("")) || (wordsToBeSaved.includes(null)) || (wordsToBeSaved.includes(undefined))) {
 	res.redirect("/files/errorPage.html");
 	} else if ((/[^äöüßa-z]/i).test(req.body.german)) {// german regex
@@ -32,27 +32,27 @@ app.use("/create", (req, res) => {
 	} else if ((/[^a-z]/i).test(req.body.english)) {// english regex
 	    res.redirect("/files/errorPage.html");
 	} else {
-	// assuming all inputs were filled
-	newWord.save((err, word) => {// word is a json object
-	    //console.log("saved1")
-	    if (err) {
-		console.log(err);
-		res.json({});
-	    } else {
-		//res.json(word);
-		//console.log("saved2")
-		res.redirect("/files/home.html");
-	    }
-	});
-    }
+	    // read from database to avoid duplicates
+	    Word.find({german : req.body.german}, (err) => {
+		if (err) {
+		    // err if the word is not in database
+		    // then save
+		    newWord.save((err, word) => {
+			if (err) {
+			    console.log(err);
+			    res.json({});
+			} else {
+			    // saved successfully
+			    res.redirect("/files/home.html");
+			}
+		    });
+		} else {
+		    res.redirect("/files/errorPage.html");
+		}
+	    });
+	}
     }
     
-
-
-    
-
-        
-    //return next();
 });
 
 // read (CRUD) 1 of 2
