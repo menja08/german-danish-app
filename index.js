@@ -148,7 +148,9 @@ app.use("/search", (req, res) => {
 	    var mywords = words[0];
 	    console.log("mywords object = " + mywords);
 	    if (mywords === undefined) {
-		res.redirect("/files/errorPage.html");
+		res.render('search', {
+		    german : undefined
+		});
 	    } else {
 		res.render('search', {
 		    german: mywords.german,
