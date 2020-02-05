@@ -32,10 +32,12 @@ app.use("/create", (req, res) => {
 	    res.redirect("/files/errorPage.html");
 	} else {
 	    // read from database to avoid duplicates
-	    Word.find({german : req.body.german}, (err) => {
-		if (err) {
-		    // error if the word is not in database
-		    // then save
+	    Word.find({german : req.body.german}, (err, word) => {
+		if (err) { 
+		    console.log(err);
+		    res.type().status(500);
+		    res.send("Err " + err);
+		} else if (word.length === 0) {// word not in database
 		    newWord.save((err, word) => {
 			if (err) {
 			    console.log(err);
@@ -45,7 +47,7 @@ app.use("/create", (req, res) => {
 			    res.redirect("/files/home.html");
 			}
 		    });
-		} else {
+		} else { // word already in database
 		    res.redirect("/files/errorPage.html");
 		}
 	    });
