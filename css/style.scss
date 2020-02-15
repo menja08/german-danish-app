@@ -5,4 +5,27 @@
 
 #showAllWords2 {
     border: 1px solid green;
+    display : flex;
+    flex-wrap : wrap;
+    width : 100%;
+
+    div:nth-child(odd) {
+	// width : 20%;
+    }
+
+    div:nth-child(even) {
+	// width : 20%;
+    }
+
+    div {
+
+	width : 20%;
+	margin : 1%;
+	
+	div {
+	    width : 100%;
+	    text-align : center;
+	    margin : 0;
+	}
+    }
 }

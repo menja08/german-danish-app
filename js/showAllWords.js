@@ -75,9 +75,11 @@ function addWords2(words, showAllWords2) {
 	boxDiv.append(englishDiv);
 	showAllWords2.append(boxDiv);
 	
-	console.log(showAllWords2)
+	// console.log(showAllWords2)
 
     }
+
+    console.log(showAllWords2);
     
 }
 
