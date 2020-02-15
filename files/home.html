@@ -13,6 +13,9 @@
     <nav>
       <div>HOME</div>
       <div>ABOUT</div>
+      <div><a href="http://localhost:3000/files/enterWords.html">CREATE</a></div>
+      <div><a href="http://localhost:3000/files/update.html">UPDATE</a></div>
+      <div><a href="http://localhost:3000/files/deleteWord.html">DELETE</a></div>
     </nav>
 
     <div>This free application helps demonstrate the similarities between some Danish and German words. Either the spelling or pronunciation is close enough.</div>
@@ -24,13 +27,11 @@
       </form>
     </div>
     <div>German word - Danish word - English word</div>
-    <div>There are 50 words currently in the database</div>
+    <div>There are <span id="numberOfWords"></span> words currently in the database</div>
     <div>Generate new random word</div>
     <div>TODOs: suggest a new word, login/sign up</div>
 
     <p>SHOWING ALL WORDS AND THEIR TRANSLATIONS</p>
-    <div id="allWords"></div>
-    <div id="showAllWords"></div>
     <div id="showAllWords2"></div>
   </body>
   <script src="../js/showAllWords.js"></script>

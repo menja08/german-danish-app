@@ -1,45 +1,19 @@
+// number of words in database
+var numberOfWordsId = document.getElementById("numberOfWords");
+
 // shows all words
-var allWords = document.getElementById("allWords");
-
-url = "http://localhost:3000/showAllWords";
-
-
-var showAllWords = document.getElementById("showAllWords");
-
-
-// create element
-function addWord(showAllWords, words) {
-    var newDivGerman = document.createElement("p");
-    var newDivDanish = document.createElement("div");
-    var newDivEnglish = document.createElement("div");
-    var breakElement = document.createElement("br");
-    
-    var newGermanWord = words[i].german;
-    var newDanishWord = words[i].danish;
-    var newEnglishWord = words[i].english;
-
-    newDivGerman = document.createTextNode(newGermanWord);
-    newDivDanish = document.createTextNode(newDanishWord);
-    newDivEnglish = document.createTextNode(newEnglishWord);
-
-    // add style
-    //newDivGerman.style.borderColor = "1px solid blue";
-
-    //appendChild();
-    showAllWords.append(newDivGerman);
-    //showAllWords.append(breakElement);
-    showAllWords.append(newDivDanish);
-    //showAllWords.append(breakElement);
-    showAllWords.append(newDivEnglish);
-    showAllWords.append(breakElement);
-    
-}
 
 // addWords2
 // for each key in words, create an element
 var showAllWords2 = document.getElementById("showAllWords2");
 
+url = "http://localhost:3000/showAllWords";
+
 $.getJSON(url, (words, status) => {
+
+    var numberOfWords = words.length;
+    console.log(numberOfWords);
+    numberOfWordsId.innerHTML = numberOfWords;
     addWords2(words, showAllWords2);
 });
 
