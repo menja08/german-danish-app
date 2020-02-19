@@ -14,7 +14,7 @@ app.use("/create", (req, res) => {
     console.log(req.body.german);
     
     if (req.body.german === undefined) {
-	res.redirect("/files/errorPage.html");
+	res.redirect("/files/errorPages/undefined.html");
     } else {
 	var newWord = new Word(req.body);
 
@@ -25,11 +25,11 @@ app.use("/create", (req, res) => {
 	if ((wordsToBeSaved.includes("")) || (wordsToBeSaved.includes(null)) || (wordsToBeSaved.includes(undefined))) {
 	res.redirect("/files/errorPage.html");
 	} else if ((/[^äöüßa-z]/i).test(req.body.german)) {// german regex
-	    res.redirect("/files/errorPage.html");
+	    res.redirect("/files/errorPages/german_regex.html");
 	} else if ((/[^æøåa-z]/i).test(req.body.danish)) {// danish regex
-	    res.redirect("/files/errorPage.html");
+	    res.redirect("/files/errorPages/danish_regex.html");
 	} else if ((/[^a-z]/i).test(req.body.english)) {// english regex
-	    res.redirect("/files/errorPage.html");
+	    res.redirect("/files/errorPages/english_regex.html");
 	} else {
 	    // read from database to avoid duplicates
 	    Word.find({german : req.body.german}, (err, word) => {
