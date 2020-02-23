@@ -23,7 +23,7 @@ app.use("/create", (req, res) => {
 
 	// before saving, check inputs
 	if ((wordsToBeSaved.includes("")) || (wordsToBeSaved.includes(null)) || (wordsToBeSaved.includes(undefined))) {
-	res.redirect("/files/errorPage.html");
+	res.redirect("/files/errorPages/errorPage.html");
 	} else if ((/[^äöüßa-z]/i).test(req.body.german)) {// german regex
 	    res.redirect("/files/errorPages/german_regex.html");
 	} else if ((/[^æøåa-z]/i).test(req.body.danish)) {// danish regex
@@ -48,7 +48,7 @@ app.use("/create", (req, res) => {
 			}
 		    });
 		} else { // word already in database
-		    res.redirect("/files/errorPage.html");
+		    res.redirect("/files/errorPages/word_in_database.html");
 		}
 	    });
 	}
