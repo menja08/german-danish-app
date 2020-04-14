@@ -97,7 +97,7 @@ app.use("/update", (req, res) => {
 	    Word.updateOne({german:oldGermanWord}, {german:newGermanWord}, (err, word) => {
 		if (err) {
 		    res.type('html').status(500);
-		    res.send('Eror ' + err);
+		    res.send('Error ' + err);
 		} else {
 		    res.json(word);
 		}
