@@ -63,7 +63,7 @@ app.use("/showLastCreated", (req, res) => {
 	    res.type().status(500);
 	    res.send("Error " + err);
 	} else {
-	    last = word[word.length-1];
+	    let last = word[word.length-1];
 	    res.json(last);
 	}
     });
@@ -97,7 +97,7 @@ app.use("/update", (req, res) => {
 	    Word.updateOne({german:oldGermanWord}, {german:newGermanWord}, (err, word) => {
 		if (err) {
 		    res.type('html').status(500);
-		    res.send('No word named' + err);
+		    res.send('Eror ' + err);
 		} else {
 		    res.json(word);
 		}
@@ -173,6 +173,7 @@ app.use("/js", express.static('js'));
 app.use("/", (req, res) => {
     res.redirect("/files/home.html");
 });
+
 
 app.listen(3000, () => {
     console.log("Listening on port 3000");
