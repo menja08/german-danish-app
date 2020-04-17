@@ -1,6 +1,7 @@
 //javascript for the last created or last added word
 
-var url = "http://localhost:3000/showLastCreated";
+// var url = "http://localhost:3000/showLastCreated";
+let url = window.location.origin + "/showLastCreated";
 
 var germanWord = document.getElementById("germanWord");
 var danishWord = document.getElementById("danishWord");
