@@ -6,13 +6,16 @@
         <meta charset="utf-8">
     </head>
 <body>
-<p>You searched: </p>
+
     <% if (german !== undefined) { %>
-        <div><%= german %></div>
-	<div><%= danish %></div>
-	<div><%= english %></div>
-    <% } else { %>
-        <div>Your word is not in the database</div>
+        <p>You searched: <p>
+        <div>german: <%= german %></div>
+	<div>danish: <%= danish %></div>
+	<div>english: <%= english %></div>
+
+	<% } else { %>
+	
+        <div>The word you searched is not in the database or is not a GERMAN word!</div>
     <% } %>
     <div><a href="../">Search another word</a></div>
 </body>
