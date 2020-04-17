@@ -7,7 +7,8 @@ var numberOfWordsId = document.getElementById("numberOfWords");
 // for each key in words, create an element
 var showAllWords2 = document.getElementById("showAllWords2");
 
-url = "http://localhost:3000/showAllWords";
+//url = "http://localhost:3000/showAllWords";
+let url = window.location.origin + "showAllWords";
 
 $.getJSON(url, (words, status) => {
 

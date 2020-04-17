@@ -5,7 +5,6 @@ app.set('view engine', 'ejs');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
-// const PORT = 8000;
 
 var Word = require("./js/Word.js");
 
@@ -175,7 +174,7 @@ app.use("/", (req, res) => {
     res.redirect("/files/home.html");
 });
 
-app.listen(process.env.PORT);
-/*app.listen(3000, () => {
-    console.log("Listening on port 3000");
-});*/
+// app.listen(process.env.PORT);
+app.listen(process.env.PORT || 3000, () => {
+    console.log("The app is running");
+});
