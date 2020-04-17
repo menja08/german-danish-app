@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 //mongoose.connect("mongodb://localhost:27017/german-danish",{useNewUrlParser:true, useUnifiedTopology:true});
 
 
-mongoose.connect("PROD_MONGODB", {useNewUrlParser:true, useUnifiedTopology:true});
+mongoose.connect(PROD_MONGODB, {useNewUrlParser:true, useUnifiedTopology:true});
 
 var Schema = mongoose.Schema;
 
