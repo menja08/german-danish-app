@@ -2,7 +2,9 @@
 var mongoose = require('mongoose');
 // mongoose.connect("mongodb://localhost:27017/german-danish",{useNewUrlParser:true, useUnifiedTopology:true});
 
-mongoose.connect("mongodb://menja08:kakeeto88@ds259878.mlab.com:59878/heroku_fzg6t17", {useNewUrlParser:true, useUnifiedTopology:true});
+//mongodb+srv://menja08:<password>@cluster0-busdh.mongodb.net/test?retryWrites=true&w=majority
+
+mongoose.connect("mongodb+srv://menja08:kakeeto88@cluster0-busdh.mongodb.net/german-danish?retryWrites=true&w=majority", {useNewUrlParser:true, useUnifiedTopology:true});
 
 var Schema = mongoose.Schema;
 
