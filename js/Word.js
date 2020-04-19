@@ -1,5 +1,4 @@
 // defines a schema and model
-//require('dotenv').config();
 var mongoose = require('mongoose');
 
 uriCloud = process.env.MONGODB_URI;
