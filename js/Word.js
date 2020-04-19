@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 
 //uriCloud = process.env.MONGODB_URI;
 
-uriCloud = "mongodb+srv://menja08:kakeeto88@cluster0-busdh.mongodb.net/german-danish?retryWrites=true&w=1";
+uriCloud = "mongodb+srv://menja08:kakeeto88@cluster0-busdh.mongodb.net/german-danish";
 
 // cluster0-shard-00-01-busdh.mongodb.net:27017
 //uriCloud2 = "mongodb+srv://menja08:kakeeto88@cluster0-busdh.mongodb.net/test?retryWrites=true&w=majority";
