@@ -7,12 +7,14 @@ var mongoose = require('mongoose');
 //mongoose.connect(process.env."mongodb+srv://menja08:kakeeto88@cluster0-busdh.mongodb.net/german-danish?retryWrites=true&w=majority", {useNewUrlParser:true, useUnifiedTopology:true});
 
 //uriCloud = process.env.MONGODB_URI;
-uriCloud = "mongodb+srv://menja08:kakeeto88@cluster0-busdh.mongodb.net:27017/german-danish?retryWrites=true&w=majority";
+uriCloud = "mongodb+srv://menja08:kakeeto88@cluster0-busdh.mongodb.net/german-danish?retryWrites=true&w=majority";
 // cluster0-shard-00-01-busdh.mongodb.net:27017
 uriCloud2 = "mongodb+srv://menja08:kakeeto88@cluster0-busdh.mongodb.net:27017/test?retryWrites=true&w=majority";
 uriLocal = "mongodb://localhost:27017/german-danish";
 
-mongoose.connect(uriCloud || uriCloud2 || uriLocal, {useNewUrlParser:true, useUnifiedTopology:true});
+mongoose.connect(uriCloud || uriCloud2 || uriLocal, {useNewUrlParser:true, useUnifiedTopology:true}).catch((err) => {
+    console.log("There is an ERROR: " + err);
+});
 
 var Schema = mongoose.Schema;
 
