@@ -13,9 +13,9 @@ uriCloud = process.env.MONGODB_URI;
 
 // cluster0-shard-00-01-busdh.mongodb.net:27017
 //uriCloud2 = "mongodb+srv://menja08:kakeeto88@cluster0-busdh.mongodb.net/test?retryWrites=true&w=majority";
-//uriLocal = "mongodb://localhost:27017/german-danish";
+uriLocal = "mongodb://localhost:27017/german-danish";
 
-mongoose.connect(uriCloud, {useNewUrlParser:true, useUnifiedTopology:true}, (err) => {
+mongoose.connect(uriCloud || uriLocal, {useNewUrlParser:true, useUnifiedTopology:true}, (err) => {
     if (err) {
 	console.log("Encountered an error: " + err);
     } else {
