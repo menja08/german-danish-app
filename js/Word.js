@@ -1,4 +1,5 @@
 // defines a schema and model slide 512
+require('dotenv').config();
 var mongoose = require('mongoose');
 // mongoose.connect("mongodb://localhost:27017/german-danish",{useNewUrlParser:true, useUnifiedTopology:true});
 
